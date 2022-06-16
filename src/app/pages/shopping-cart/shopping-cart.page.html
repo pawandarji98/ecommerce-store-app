@@ -1,0 +1,170 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary" no-border>
+    <ion-title>
+      <span><img class="shopping-cart" src="../../assets/icons8-shopping-cart-64.png" />
+      </span>
+    </ion-title>
+
+    <ion-buttons slot="start">
+      <ion-button routerLink="/dashboard">
+        <ion-icon class="back-arrow-icon" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button>
+        <img src="../../assets/notification.svg" />
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <h1 class="title">Cart</h1>
+
+  <div class="cart-items">
+
+    <ion-card mode="ios">
+      <ion-card-content>
+        <div class="item-img">
+          <img src="../../assets/medic3.jpg" />
+        </div>
+
+        <div class="item-info">
+          <p>Durex condom</p>
+          <p>Next</p>
+          <p>$54.00</p>
+
+          <div class="qty-selector">
+            <ion-button fill="clear">-</ion-button>
+            <ion-label>1</ion-label>
+            <ion-button fill="clear">+</ion-button>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card mode="ios">
+      <ion-card-content>
+        <div class="item-img">
+          <img src="../../assets/medic5.jpeg" />
+        </div>
+
+        <div class="item-info">
+          <p>I pill</p>
+          <p>Plus Point</p>
+          <p>$34.00</p>
+
+          <div class="qty-selector">
+            <ion-button fill="clear">-</ion-button>
+            <ion-label>1</ion-label>
+            <ion-button fill="clear">+</ion-button>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card mode="ios">
+      <ion-card-content>
+        <div class="item-img">
+          <img src="../../assets/medic6.jpeg" />
+        </div>
+
+        <div class="item-info">
+          <p>Vigra</p>
+          <p>Cat's Eye</p>
+          <p>$44.00</p>
+
+          <div class="qty-selector">
+            <ion-button fill="clear">-</ion-button>
+            <ion-label>1</ion-label>
+            <ion-button fill="clear">+</ion-button>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card mode="ios">
+      <ion-card-content>
+        <div class="item-img">
+          <img src="../../assets/medic1.png" />
+        </div>
+
+        <div class="item-info">
+          <p>Pharmaceutical</p>
+          <p>Lotto.LTD</p>
+          <p>$34.00</p>
+
+          <div class="qty-selector">
+            <ion-button fill="clear">-</ion-button>
+            <ion-label>1</ion-label>
+            <ion-button fill="clear">+</ion-button>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card mode="ios">
+      <ion-card-content>
+        <div class="item-img">
+          <img src="../../assets/medic2.png" />
+        </div>
+
+        <div class="item-info">
+          <p>Combiflam</p>
+          <p>Bata</p>
+          <p>$44.00</p>
+
+          <div class="qty-selector">
+            <ion-button fill="clear">-</ion-button>
+            <ion-label>1</ion-label>
+            <ion-button fill="clear">+</ion-button>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <ion-card class="checkout-summary-card">
+    <ion-card-content>
+      <div class="amount-smmary">
+        <ion-row class="subtotal">
+          <ion-col size="6">
+            <span>Subtotal:</span>
+          </ion-col>
+          <ion-col>
+            <span>₹ 1000.00</span>
+          </ion-col>
+        </ion-row>
+        <ion-row class="delivery-div">
+          <ion-col size="6">
+            <span class="delivery">Delivery:</span>
+          </ion-col>
+          <ion-col>
+            <span class="delivery">₹ 100.00</span>
+          </ion-col>
+        </ion-row>
+        <ion-row class="discount-div">
+          <ion-col size="6">
+            <span class="discount">Discount:</span>
+          </ion-col>
+          <ion-col>
+            <span class="discount">₹ 500.00</span>
+          </ion-col>
+        </ion-row>
+        <ion-row class="total">
+          <ion-col size="6">
+            <span><b>Total:</b></span>
+          </ion-col>
+          <ion-col>
+            <span><b>₹ 600.00</b></span>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+<ion-footer translucent="true" class="ion-no-border" mode="md">
+  <ion-toolbar color="translucent">
+    <ion-button expand="block" class="main-button" routerLink="/checkout" routerDirection="forward">Continue</ion-button>
+  </ion-toolbar>
+</ion-footer>

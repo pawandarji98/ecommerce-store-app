@@ -1,3 +1,6 @@
 node_modules
+android
+www
+e2e
 package-lock.json
 .env

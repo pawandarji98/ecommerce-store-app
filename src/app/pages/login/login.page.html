@@ -1,0 +1,47 @@
+<ion-content>
+  <div id="header">
+  <div id="app-bar">
+    <div></div>
+    <div id="logo">
+      <img src="../../../assets/user-avatar.png" alt="app_logo" />
+    </div>
+    <div></div>
+  </div>
+  <h1>Sign In</h1>
+  <p>Sign in to discover medical store near <br />around you</p>
+</div>
+
+<div class="wrapper">
+  <ion-card class="form-wrapper">
+    <ion-card-content>
+      <form [formGroup]="credentialsForm" (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-icon name="call"></ion-icon>
+        <ion-input type="mobile" placeholder="Mobile" formControlName="mobile"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="lock-closed"></ion-icon>
+        <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-button expand="block" type="submit"> Sign In</ion-button>
+    </form>
+      <div class="forget-password">
+        <span>Forget password</span>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="line-text">
+    <span class="lines"></span>
+    <span class="text">Don't have an account?</span>
+  </div>
+
+  <ion-card class="social-wrapper">
+    <ion-card-content>
+      <div class="socials">
+        <ion-button expand="block" (click)="NavigateRegister()"> Create Acconut</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</div>
+</ion-content>

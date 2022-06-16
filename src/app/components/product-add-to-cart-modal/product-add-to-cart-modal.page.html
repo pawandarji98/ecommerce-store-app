@@ -1,0 +1,23 @@
+<ion-content class="no-scroll">
+  <div class="cart-modal-product-image">
+    <div class="product-image">
+      <img [src]="productData?.imgUrl" />
+    </div>
+      <div class="product-info">
+        <div class="product-name">
+          <ion-icon class="cart-modal-icons" name="list-circle"></ion-icon>{{productData?.name | titlecase}}
+          <span class="product-company-name"><ion-icon class="cart-modal-price-icon" name="pricetags"></ion-icon> ₹{{productData?.displayPrice}}</span>
+        </div>
+    </div>
+  </div>
+  <ion-fab vertical="top" horizontal="end" slot="fixed" (click)="onCloseModal()">
+    <ion-fab-button size="small">
+      <ion-icon name="close"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+<ion-footer no-shadow>
+	<ion-toolbar class="button-cover-div" position="bottom">
+		<ion-button expand="full" class="cart-button"><ion-icon name="cart"></ion-icon> Add to cart</ion-button>
+	</ion-toolbar>
+</ion-footer>

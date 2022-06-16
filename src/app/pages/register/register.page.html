@@ -1,0 +1,73 @@
+<ion-content>
+  <div id="header">
+  <div id="app-bar">
+    <ion-icon name="arrow-back-circle" (click)="navigateLoginPage()"></ion-icon>
+    <div id="logo">
+      <img src="../../../assets/user-avatar.png" alt="app_logo" />
+    </div>
+    <div></div>
+  </div>
+  <h1>Create Account</h1>
+  <p>Sign up to discover medical store near <br />around you</p>
+</div>
+
+<div class="wrapper">
+  <ion-card class="form-wrapper">
+    <ion-card-content>
+      <form [formGroup]="credentialsForm" (ngSubmit)="onSubmit()">
+        <ion-item>
+          <ion-icon name="person"></ion-icon>
+          <ion-input type="text" placeholder="Full Name" formControlName="name"></ion-input>
+        </ion-item>
+        <ion-item button="true" id="open-date-input">
+          <ion-icon name="calendar"></ion-icon>
+          <ion-label>DOB</ion-label>
+          <ion-text slot="end">{{ dateValue }}</ion-text>
+          <ion-popover trigger="open-date-input" show-backdrop="false">
+            <ng-template>
+              <ion-datetime
+                #popoverDatetime
+                size="cover"
+                presentation="date"
+                (ionChange)="dateValue = formatDate(popoverDatetime.value)"
+                formControlName="dob"
+              ></ion-datetime>
+            </ng-template>
+          </ion-popover>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="mail"></ion-icon>
+          <ion-input type="email" placeholder="Email Address" formControlName="email"></ion-input>
+        </ion-item>
+      <ion-item>
+        <ion-icon name="call"></ion-icon>
+        <ion-input type="mobile" placeholder="Mobile" formControlName="mobile"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="pin"></ion-icon>
+        <ion-input type="text" placeholder="Pincode" formControlName="pincode"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="lock-closed"></ion-icon>
+        <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="lock-closed"></ion-icon>
+        <ion-input type="password" placeholder="Confirm Password" formControlName="passwordConfirm"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-icon name="book"></ion-icon> -->
+        <ion-textarea placeholder="Address" formControlName="address"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label>Gender</ion-label>
+        <ion-select [(ngModel)]="gender" formControlName="gender">
+          <ion-select-option value={{item.name}} *ngFor="let item of GenderDBOptions">{{item.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-button expand="block" type="submit"> Create Acconut</ion-button>
+    </form>
+    </ion-card-content>
+  </ion-card>
+</div>
+</ion-content>

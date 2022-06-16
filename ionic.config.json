@@ -1,0 +1,11 @@
+{
+  "name": "storeMobileApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "proxies": [{
+    "path": "/api/v1",
+    "proxyUrl": "http://localhost:3000"
+  }]
+}

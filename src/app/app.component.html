@@ -1,0 +1,46 @@
+<ion-app>
+  <ion-menu menuId="main-menu" contentId="main">
+    <ion-content>
+      <div class="menu-header-bg"></div>
+      <div class="header-content">
+        <img src="../assets/user-avatar.png" alt="" />
+        <ion-label>
+          <h2>Pawan Darji</h2>
+          <p>pawandarji98@gmail.com</p>
+        </ion-label>
+      </div>
+      <!-- <div class="action-button">
+        <ion-button>
+          <ion-icon slot="start" name="add"></ion-icon> Add Branch
+        </ion-button>
+      </div> -->
+      <ion-list class="menu-items" lines="none">
+        <ion-item (click)="onClickItem('dashboard')" [ngClass]="this?.auth.activePage === 'dashboard' ? 'active': 'inactive'" routerLink="/dashboard">
+          <ion-icon name="pie-chart"></ion-icon>Dashboard
+        </ion-item>
+        <ion-item (click)="onClickItem('profile')" [ngClass]="this?.auth.activePage === 'profile' ? 'active': 'inactive'">
+          <ion-icon name="person-circle-outline"></ion-icon>Profile
+        </ion-item>
+        <ion-item (click)="onClickItem('orderHistory')" [ngClass]="this?.auth.activePage === 'orderHistory' ? 'active': 'inactive'">
+          <ion-icon name="barcode"></ion-icon>Order history
+        </ion-item>
+        <ion-item (click)="onClickItem('wallet')" [ngClass]="this?.auth.activePage === 'wallet' ? 'active': 'inactive'">
+          <ion-icon name="wallet"></ion-icon>Wallet
+        </ion-item>
+        <ion-item (click)="onClickItem('prescription')" [ngClass]="this?.auth.activePage === 'prescription' ? 'active': 'inactive'">
+          <ion-icon name="newspaper"></ion-icon>Prescriptions
+        </ion-item>
+        <ion-item (click)="onClickItem('savedItems')" [ngClass]="this?.auth.activePage === 'savedItems' ? 'active': 'inactive'">
+          <ion-icon name="bookmark"></ion-icon>Saved items
+        </ion-item>
+        <ion-item (click)="onClickItem('referFriend')" [ngClass]="this?.auth.activePage === 'referFriend' ? 'active': 'inactive'">
+          <ion-icon name="share-social"></ion-icon>Refer a friend
+        </ion-item>
+        <ion-item>
+          <ion-icon name="log-out"></ion-icon>Sign Out
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-app>

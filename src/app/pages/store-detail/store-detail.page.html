@@ -1,0 +1,137 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary" no-border>
+    <ion-title> {{storeDetailList?.name}} </ion-title>
+
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu">
+        <img src="../../assets/menu.svg" />
+      </ion-menu-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button>
+        <img src="../../assets/notification.svg" />
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="banner">
+    <img class="store_logo" [src]="storeDetailList?.logo" />
+  </div>
+  <div class="main-content">
+    <div class="shop-basic-detail">
+      <ion-icon name="storefront" class="store-icon"></ion-icon>
+      <span class="store-name">{{storeDetailList?.name}}</span>
+    </div>
+    <div class="shop-address">
+      <ion-icon name="navigate-circle" class="store-location-icon"></ion-icon>
+      <span class="store-address">{{storeDetailList?.address}}</span>,
+      <span class="distance-tag">1 km</span>
+    </div>
+    <div class="rating">
+        <ion-icon name="trending-up" class="store-icon"></ion-icon>
+        <ion-icon name="star" class="star-icon"></ion-icon>
+        <ion-icon name="star" class="star-icon"></ion-icon>
+        <ion-icon name="star" class="star-icon"></ion-icon>
+        <ion-icon name="star" class="star-icon"></ion-icon>
+        <ion-icon name="star" class="star-icon"></ion-icon>
+    </div>
+    <div class="search">
+      <ion-item lines="none" class="ion-no-padding">
+        <ion-icon slot="start" name="search-outline"></ion-icon>
+        <ion-input
+          placeholder="Search medicines"
+          [(ngModel)]="searchName"
+          #name="ngModel"
+          (keyup)="onSearchMedicines()"
+          (keyup.enter)="onEnter()"
+          (keydown.backspace)="onBackSpace()"
+        ></ion-input>
+      </ion-item>
+    </div>
+    <div class="products" *ngIf="this.isSearchingOn === false; else elseBlock">
+      <div class="live-event" *ngFor="let item of productsList">
+        <img [src]="item?.imgUrl" class="product-img" />
+        <div class="info">
+          <div class="content">
+            <h6>{{item?.name}}</h6>
+            <p class="stats">
+              <span>{{item?.companyName}}</span>
+            </p>
+            <div class="stats">
+              <div><ion-icon class="cart-modal-price-icon" name="pricetags"></ion-icon><s class="stroke-price"> ₹{{item?.displayPrice + 1}}</s> ₹{{item?.displayPrice}}</div>
+            </div>
+            <div class="additional-info"></div>
+          </div>
+          <div class="indicator" (click)="onAddToCartModal(item)">
+            <div>Add</div>
+          </div>
+        </div>
+      </div>
+      <!-- <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+          loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll> -->
+    </div>
+    <ng-template #elseBlock>
+      <div class="title">
+        <p>Showing results of <b>" {{this.searchName}} "</b></p>
+      </div>
+      <div class="live-event" *ngFor="let item of searchList">
+        <img src="../../assets/events/event3.svg" />
+
+        <div class="info">
+          <div class="content">
+            <h6>{{item?.product?.name}}</h6>
+
+            <p class="stats">
+              <span>{{item?.store?.name}}</span>
+            </p>
+
+            <p class="location">
+              <ion-icon name="location"></ion-icon>Nallasopara, mumbai
+            </p>
+
+            <div class="additional-info">
+              <div class="attendees">
+                <img src="../../assets/persons/person1.svg" />
+                <img src="../../assets/persons/person2.svg" />
+                <img src="../../assets/persons/person3.svg" />
+                <img src="../../assets/persons/person4.svg" />
+              </div>
+            </div>
+          </div>
+
+          <div class="indicator">
+            <div>₹{{item?.product?.displayPrice}}</div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+  <ion-fab
+    vertical="bottom"
+    horizontal="end"
+    slot="fixed"
+    (click)="onCategoryModal()"
+  >
+    <ion-fab-button class="menu-icon">
+      <ion-icon name="reorder-three"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-fab
+    vertical="bottom"
+    horizontal="start"
+    slot="fixed"
+    [routerLink]="['/shopping-cart']"
+    routerLinkActive="router-link-active"
+  >
+    <ion-fab-button class="menu-icon">
+      <ion-icon name="cart"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

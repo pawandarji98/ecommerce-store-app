@@ -1,0 +1,132 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary" no-border>
+    <ion-title>
+      Dashboard
+    </ion-title>
+
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu">
+        <img src="../../assets/menu.svg" />
+      </ion-menu-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button>
+        <img src="../../assets/notification.svg" />
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="banner">
+    <img src="../../assets/banner.svg" />
+
+    <div class="caption ion-padding">
+      Get discount <br>
+      on every purchase
+    </div>
+
+    <div class="search">
+      <ion-item lines="none" class="ion-no-padding">
+        <ion-icon slot="start" name="search-outline"></ion-icon>
+        <ion-input placeholder="Search medicines" [(ngModel)]="searchName" #name="ngModel" (keyup)="onSearchMedicines()" (keyup.enter)="onEnter()" (keydown.backspace)="onBackSpace()"></ion-input>
+        <ion-button slot='end'>
+          <img src="../../assets/filter.svg" />
+        </ion-button>
+      </ion-item>
+    </div>
+  </div>
+  <div *ngIf="this.isSearchingOn === false; else elseBlock">
+  <div class="title">
+    <h2>Popular Store's</h2>
+
+    <p>See all</p>
+  </div>
+
+  <div class="event-slider">
+    <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }" class="default-left-padding">
+      <ion-slide *ngFor="let item of nearbyStoreList">
+        <ion-col class="ion-text-left">
+          <ion-card>
+            <ion-card-header class="ion-no-padding" (click)="onClickStore(item)">
+              <img class="store_logo" [src]="item.logo" />
+            </ion-card-header>
+
+            <ion-card-content>
+              <p class="date">{{item.createdAt}}</p>
+              <h2 class="eventname">{{item.name}}</h2>
+              <p class="location"><ion-icon name="location"></ion-icon>Nallasopara, mumbai</p>
+
+              <div class="additional-info">
+                <div class="attendees">
+                  <img src="../../assets/persons/person1.svg" />
+                  <img src="../../assets/persons/person2.svg" />
+                  <img src="../../assets/persons/person3.svg" />
+                  <img src="../../assets/persons/person4.svg" />
+                  <div class="count">
+                    <img src="../../assets/persons/person-placeholder.svg" />
+                  </div>
+                </div>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <div class="default-top-padding title">
+    <h2>In your area</h2>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeXs="4" *ngFor="let cat of categories">
+        <ion-card class="categories-card">
+          <ion-img [src]="cat.imgUrl" class="sub-category-img"></ion-img>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+<ng-template #elseBlock>
+  <div class="title">
+    <p>Showing results of  <b>" {{this.searchName}} "</b></p>
+  </div>
+  <div class="live-event" *ngFor="let item of searchList">
+    <img src="../../assets/events/event3.svg" />
+
+    <div class="info">
+      <div class="content">
+        <h6>{{item?.product?.name}}</h6>
+
+        <p class="stats">
+          <span>{{item?.store?.name}}</span>
+        </p>
+
+        <p class="location"><ion-icon name='location'></ion-icon>Nallasopara, mumbai</p>
+
+        <div class="additional-info">
+          <div class="attendees">
+            <img src="../../assets/persons/person1.svg" />
+            <img src="../../assets/persons/person2.svg" />
+            <img src="../../assets/persons/person3.svg" />
+            <img src="../../assets/persons/person4.svg" />
+          </div>
+        </div>
+      </div>
+
+      <div class="indicator">
+        <div>₹{{item?.product?.displayPrice}}</div>
+      </div>
+    </div>
+  </div>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ng-template>
+</ion-content>
