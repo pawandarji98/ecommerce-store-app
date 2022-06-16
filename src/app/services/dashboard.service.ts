@@ -38,7 +38,7 @@ export class DashboardService {
     const endPoint = `${this.url}/product/searchProducts`;
     return this.httpClient.get<any[]>(endPoint , {params})
     .pipe(
-      tap(products => console.log('products retrived' , products)),
+      tap(storesList => console.log('store retrived' , storesList)),
       catchError(e => {
         throw new Error(e);
       })

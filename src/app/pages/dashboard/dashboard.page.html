@@ -96,17 +96,10 @@
   </div>
   <div class="live-event" *ngFor="let item of searchList">
     <img src="../../assets/events/event3.svg" />
-
     <div class="info">
       <div class="content">
-        <h6>{{item?.product?.name}}</h6>
-
-        <p class="stats">
-          <span>{{item?.store?.name}}</span>
-        </p>
-
+        <h6>{{item?.name}}</h6>
         <p class="location"><ion-icon name='location'></ion-icon>Nallasopara, mumbai</p>
-
         <div class="additional-info">
           <div class="attendees">
             <img src="../../assets/persons/person1.svg" />
@@ -115,10 +108,6 @@
             <img src="../../assets/persons/person4.svg" />
           </div>
         </div>
-      </div>
-
-      <div class="indicator">
-        <div>₹{{item?.product?.displayPrice}}</div>
       </div>
     </div>
   </div>

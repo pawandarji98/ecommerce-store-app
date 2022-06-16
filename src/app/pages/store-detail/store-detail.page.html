@@ -52,24 +52,33 @@
       </ion-item>
     </div>
     <div class="products" *ngIf="this.isSearchingOn === false; else elseBlock">
-      <div class="live-event" *ngFor="let item of productsList">
-        <img [src]="item?.imgUrl" class="product-img" />
-        <div class="info">
-          <div class="content">
-            <h6>{{item?.name}}</h6>
-            <p class="stats">
-              <span>{{item?.companyName}}</span>
-            </p>
-            <div class="stats">
-              <div><ion-icon class="cart-modal-price-icon" name="pricetags"></ion-icon><s class="stroke-price"> ₹{{item?.displayPrice + 1}}</s> ₹{{item?.displayPrice}}</div>
+      <div *ngIf="productsList && productsList.length > 0; else innerelse">
+        <div class="live-event" *ngFor="let item of productsList">
+          <img [src]="item?.imgUrl" class="product-img" />
+          <div class="info">
+            <div class="content">
+              <h6>{{item?.name}}</h6>
+              <p class="stats">
+                <span>{{item?.companyName}}</span>
+              </p>
+              <div class="stats">
+                <div><ion-icon class="cart-modal-price-icon" name="pricetags"></ion-icon><s class="stroke-price"> ₹{{item?.displayPrice + 1}}</s> ₹{{item?.displayPrice}}</div>
+              </div>
+              <div class="additional-info"></div>
             </div>
-            <div class="additional-info"></div>
-          </div>
-          <div class="indicator" (click)="onAddToCartModal(item)">
-            <div>Add</div>
+            <div class="indicator" (click)="onAddToCartModal(item)">
+              <div>Add</div>
+            </div>
           </div>
         </div>
       </div>
+      <ng-template #innerelse>
+        <div class="no-data-found-div">
+          <p class="empty-data-text" *ngIf="this.params.productSubCategoryId === ''">Oops , no products found for this Store</p>
+          <p class="empty-data-text" *ngIf="this.params.productSubCategoryId !== ''">Oops , no products found for selected Category</p>
+          <img src="../../../assets/Empty-pana.svg" />
+        </div>
+      </ng-template>
       <!-- <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
         <ion-infinite-scroll-content
           loadingSpinner="bubbles"
@@ -81,36 +90,44 @@
       <div class="title">
         <p>Showing results of <b>" {{this.searchName}} "</b></p>
       </div>
-      <div class="live-event" *ngFor="let item of searchList">
-        <img src="../../assets/events/event3.svg" />
-
-        <div class="info">
-          <div class="content">
-            <h6>{{item?.product?.name}}</h6>
-
-            <p class="stats">
-              <span>{{item?.store?.name}}</span>
-            </p>
-
-            <p class="location">
-              <ion-icon name="location"></ion-icon>Nallasopara, mumbai
-            </p>
-
-            <div class="additional-info">
-              <div class="attendees">
-                <img src="../../assets/persons/person1.svg" />
-                <img src="../../assets/persons/person2.svg" />
-                <img src="../../assets/persons/person3.svg" />
-                <img src="../../assets/persons/person4.svg" />
+      <div class="search-results" *ngIf="searchList && searchList.length > 0; else searchElse">
+        <div class="live-event" *ngFor="let item of searchList">
+          <img src="../../assets/events/event3.svg" />
+  
+          <div class="info">
+            <div class="content">
+              <h6>{{item?.product?.name}}</h6>
+  
+              <p class="stats">
+                <span>{{item?.store?.name}}</span>
+              </p>
+  
+              <p class="location">
+                <ion-icon name="location"></ion-icon>Nallasopara, mumbai
+              </p>
+  
+              <div class="additional-info">
+                <div class="attendees">
+                  <img src="../../assets/persons/person1.svg" />
+                  <img src="../../assets/persons/person2.svg" />
+                  <img src="../../assets/persons/person3.svg" />
+                  <img src="../../assets/persons/person4.svg" />
+                </div>
               </div>
             </div>
-          </div>
-
-          <div class="indicator">
-            <div>₹{{item?.product?.displayPrice}}</div>
+  
+            <div class="indicator">
+              <div>₹{{item?.product?.displayPrice}}</div>
+            </div>
           </div>
         </div>
       </div>
+      <ng-template #searchElse>
+        <div class="no-data-found-div">
+          <p class="empty-data-text">Oops , no products found by name '{{this.searchName}}'</p>
+          <img src="../../../assets/Empty-pana.svg" />
+        </div>
+      </ng-template>
     </ng-template>
   </div>
   <ion-fab

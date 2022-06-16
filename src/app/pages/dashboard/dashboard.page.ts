@@ -56,9 +56,9 @@ export class DashboardPage implements OnInit , AfterViewInit {
     if(this.searchName.length > 2) {
       this.isSearchingOn = true;
       this.params.search = this.searchName;
-      this.daashboardService.searchMedicinesByKey(this.params).subscribe((res:any) => {
+      await this.daashboardService.searchMedicinesByKey(this.params).subscribe((res:any) => {
         if(res.status === 'Success') {
-          this.searchList = res.productDetailData;
+          this.searchList = res.storesList;
         }
       } , (err) => {
         console.log("Error while getting search results");

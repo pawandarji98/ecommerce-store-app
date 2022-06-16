@@ -4,3 +4,4 @@ www
 e2e
 package-lock.json
 .env
+.angular
